@@ -15,56 +15,56 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iiht.training.model.User;
+import com.iiht.training.model.Project;
 import com.iiht.training.service.IProjectService;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/projects")
+public class ProjectController {
 
 	@Autowired
 	private IProjectService projectService;
 
-	@GetMapping("/{userId}")
-	public ResponseEntity<User> getUserById(@PathVariable("userId") Long userId) {
-		ResponseEntity<User> response = null;
+	@GetMapping("/{projectId}")
+	public ResponseEntity<Project> getProjectById(@PathVariable("projectId") Long projectId) {
+		ResponseEntity<Project> response = null;
 
-		User user = projectService.getUserById(userId);
+		Project project = projectService.getProjectById(projectId);
 
-		if (null != user) {
-			response = new ResponseEntity<User>(user, HttpStatus.OK);
+		if (null != project) {
+			response = new ResponseEntity<Project>(project, HttpStatus.OK);
 		} else {
-			response = new ResponseEntity<User>(user, HttpStatus.NOT_FOUND);
+			response = new ResponseEntity<Project>(project, HttpStatus.NOT_FOUND);
 		}
 
 		return response;
 	}
 
 	@GetMapping
-	public ResponseEntity<List<User>> getAllUsers() {
-		return new ResponseEntity<List<User>>(projectService.listUsers(), HttpStatus.OK);
+	public ResponseEntity<List<Project>> getAllProjects() {
+		return new ResponseEntity<List<Project>>(projectService.listProjects(), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> addUser(@RequestBody User user) {
-		return new ResponseEntity<User>(projectService.addUser(user), HttpStatus.OK);
+	public ResponseEntity<Project> addProject(@RequestBody Project project) {
+		return new ResponseEntity<Project>(projectService.addProject(project), HttpStatus.OK);
 	}
 
 	@PutMapping
-	public ResponseEntity<User> saveUser(@RequestBody User user) {
-		return new ResponseEntity<User>(projectService.addUser(user), HttpStatus.OK);
+	public ResponseEntity<Project> saveProject(@RequestBody Project project) {
+		return new ResponseEntity<Project>(projectService.addProject(project), HttpStatus.OK);
 
 	}
 
-	@DeleteMapping("/{userId}")
-	public ResponseEntity<Void> deleteUser(@PathVariable("userId") Long userId) {
+	@DeleteMapping("/{projectId}")
+	public ResponseEntity<Void> deleteProject(@PathVariable("projectId") Long projectId) {
 
 		ResponseEntity<Void> response = null;
-		User user = projectService.getUserById(userId);
+		Project project = projectService.getProjectById(projectId);
 
-		if (null != user) {
-			projectService.deleteUser(userId);
+		if (null != project) {
+			projectService.deleteProject(projectId);
 			response = new ResponseEntity<>(HttpStatus.OK);
 		} else {
 			response = new ResponseEntity<>(HttpStatus.NOT_FOUND);

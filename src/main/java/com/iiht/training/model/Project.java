@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -42,6 +43,9 @@ public class Project implements Serializable {
 	private Date endDate;
 
 	private int priority;
+	
+	@OneToOne
+	private User user;
 
 	public long getProjectId() {
 		return projectId;

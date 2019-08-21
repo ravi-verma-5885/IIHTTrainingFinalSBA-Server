@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.iiht.training.dao.IProjectRepository;
 import com.iiht.training.dao.IUserRepository;
+import com.iiht.training.model.Project;
 import com.iiht.training.model.User;
 
 @Service
@@ -15,6 +17,9 @@ public class ProjectServiceImpl implements IProjectService {
 
 	@Autowired
 	private IUserRepository userRepo;
+	
+	@Autowired
+	private IProjectRepository projectRepo;
 
 	@Override
 	public User getUserById(Long userId) {
@@ -40,6 +45,32 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public void deleteUser(Long userId) {
 		userRepo.deleteById(userId);
+	}
+	
+	@Override
+	public Project getProjectById(Long projectId) {
+
+		Optional<Project> optProject = projectRepo.findById(projectId);
+		Project project = optProject.isPresent() ? optProject.get() : null;
+
+		return project;
+	}
+
+	@Override
+	public List<Project> listProjects() {
+		return projectRepo.findAll();
+	}
+
+	@Transactional
+	@Override
+	public Project addProject(Project project) {
+		return projectRepo.save(project);
+	}
+
+	@Transactional
+	@Override
+	public void deleteProject(Long projectId) {
+		projectRepo.deleteById(projectId);
 	}
 
 }

@@ -14,7 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -42,11 +42,11 @@ public class User implements Serializable {
 
 	private String employeeId;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "projectId")
 	private Project project;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "taskId")
 	private Task task;
 
