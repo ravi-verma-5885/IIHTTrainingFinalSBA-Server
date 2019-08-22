@@ -17,6 +17,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * @author Ravi
  *
@@ -38,8 +42,12 @@ public class Project implements Serializable {
 
 	private String projectName;
 
+//	@JsonFormat(pattern = "MM/dd/yyyy")
+//	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date startDate;
 
+//	@JsonFormat(pattern = "MM/dd/yyyy")
+//	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date endDate;
 
 	private int priority;
