@@ -7,12 +7,16 @@
 package com.iiht.training.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -35,6 +39,9 @@ public class ParentTask implements Serializable {
 	private long parentId;
 
 	private String parentTask;
+	
+	@OneToMany(mappedBy = "parentTask", cascade = CascadeType.ALL)
+	private Set<Task> tasks = new HashSet<>();
 
 	public long getParentId() {
 		return parentId;

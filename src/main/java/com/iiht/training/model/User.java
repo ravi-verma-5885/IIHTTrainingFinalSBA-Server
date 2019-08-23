@@ -7,14 +7,16 @@
 package com.iiht.training.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -42,13 +44,11 @@ public class User implements Serializable {
 
 	private String employeeId;
 
-	@OneToOne
-	@JoinColumn(name = "projectId")
-	private Project project;
-
-	@OneToOne
-	@JoinColumn(name = "taskId")
-	private Task task;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<Project> projects = new HashSet<>();
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private Set<Task> tasks = new HashSet<>();
 
 	public long getUserId() {
 		return userId;
@@ -82,35 +82,17 @@ public class User implements Serializable {
 		this.employeeId = employeeId;
 	}
 
-	public Project getProject() {
-		return project;
-	}
-
-	public void setProject(Project project) {
-		this.project = project;
-	}
-
-	public Task getTask() {
-		return task;
-	}
-
-	public void setTask(Task task) {
-		this.task = task;
-	}
-
 	public User(String firstName, String lastName, String employeeId, Project project, Task task) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.employeeId = employeeId;
-		this.project = project;
-		this.task = task;
 	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", employeeId="
-				+ employeeId + ", project=" + project + ", task=" + task + "]";
+				+ employeeId + "]";
 	}
 
 	public User() {

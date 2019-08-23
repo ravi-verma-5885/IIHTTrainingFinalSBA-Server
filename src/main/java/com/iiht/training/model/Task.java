@@ -48,11 +48,15 @@ public class Task implements Serializable {
 	private String status;
 
 	@ManyToOne
-	@JoinColumn(name = "parentId")
+	@JoinColumn(name = "parent_id")
 	private ParentTask parentTask;
 
 	@ManyToOne
-	@JoinColumn(name = "projectId")
+	@JoinColumn(name = "user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "project_id")
 	private Project project;
 
 	public long getTaskId() {

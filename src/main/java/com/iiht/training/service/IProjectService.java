@@ -3,6 +3,7 @@ package com.iiht.training.service;
 import java.util.List;
 
 import com.iiht.training.model.Project;
+import com.iiht.training.model.Task;
 import com.iiht.training.model.User;
 
 public interface IProjectService {
@@ -22,5 +23,13 @@ public interface IProjectService {
 	public Project addProject(Project project);
 	
 	public void deleteProject(Long projectId);
+	
+	public Task getTaskById(Long taskId);
+	
+	public List<Task> listTasks(); 
+	
+	public Task addTask(Task task);
+	
+	public void deleteTask(Long taskId);
 	
 }

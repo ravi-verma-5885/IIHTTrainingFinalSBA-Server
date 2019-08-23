@@ -8,18 +8,19 @@ package com.iiht.training.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * @author Ravi
@@ -52,8 +53,12 @@ public class Project implements Serializable {
 
 	private int priority;
 	
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+	private Set<Task> tasks = new HashSet<>();
 
 	public long getProjectId() {
 		return projectId;
@@ -95,22 +100,40 @@ public class Project implements Serializable {
 		this.priority = priority;
 	}
 
-	public Project(long projectId, String projectName, Date startDate, Date endDate, int priority) {
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	public Project(long projectId, String projectName, Date startDate, Date endDate, int priority, User user) {
 		super();
 		this.projectId = projectId;
 		this.projectName = projectName;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.priority = priority;
+		this.user = user;
 	}
 
-	public Project(String projectName, Date startDate, Date endDate, int priority) {
-		super();
-		this.projectName = projectName;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.priority = priority;
-	}
+//	public Project(long projectId, String projectName, Date startDate, Date endDate, int priority) {
+//		super();
+//		this.projectId = projectId;
+//		this.projectName = projectName;
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//		this.priority = priority;
+//	}
+//
+//	public Project(String projectName, Date startDate, Date endDate, int priority) {
+//		super();
+//		this.projectName = projectName;
+//		this.startDate = startDate;
+//		this.endDate = endDate;
+//		this.priority = priority;
+//	}
 
 	@Override
 	public String toString() {

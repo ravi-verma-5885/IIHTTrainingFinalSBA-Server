@@ -43,17 +43,20 @@ public class ProjectController {
 
 	@GetMapping
 	public ResponseEntity<List<Project>> getAllProjects() {
-		return new ResponseEntity<List<Project>>(projectService.listProjects(), HttpStatus.OK);
+		List<Project> projectList = projectService.listProjects();
+		return new ResponseEntity<List<Project>>(projectList, HttpStatus.OK);
 	}
 	
 	@PostMapping
 	public ResponseEntity<Project> addProject(@RequestBody Project project) {
-		return new ResponseEntity<Project>(projectService.addProject(project), HttpStatus.OK);
+		Project projectReturned = projectService.addProject(project);
+		return new ResponseEntity<Project>(projectReturned, HttpStatus.OK);
 	}
 
 	@PutMapping
 	public ResponseEntity<Project> saveProject(@RequestBody Project project) {
-		return new ResponseEntity<Project>(projectService.addProject(project), HttpStatus.OK);
+		Project projectReturned = projectService.addProject(project);
+		return new ResponseEntity<Project>(projectReturned, HttpStatus.OK);
 
 	}
 
