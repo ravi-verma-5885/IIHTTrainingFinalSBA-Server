@@ -16,8 +16,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * @author Ravi
@@ -39,6 +43,10 @@ public class ParentTask implements Serializable {
 	private long parentId;
 
 	private String parentTask;
+	
+	@ManyToOne
+	@JoinColumn(name = "project_id")
+	private Project project;
 	
 	@OneToMany(mappedBy = "parentTask", cascade = CascadeType.ALL)
 	private Set<Task> tasks = new HashSet<>();
@@ -63,6 +71,14 @@ public class ParentTask implements Serializable {
 		super();
 		this.parentId = parentId;
 		this.parentTask = parentTask;
+	}
+	@JsonIgnore
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 	@Override

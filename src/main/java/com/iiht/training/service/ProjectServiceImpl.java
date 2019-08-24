@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.iiht.training.dao.IParentTaskRepository;
 import com.iiht.training.dao.IProjectRepository;
 import com.iiht.training.dao.ITaskRepository;
 import com.iiht.training.dao.IUserRepository;
+import com.iiht.training.model.ParentTask;
 import com.iiht.training.model.Project;
 import com.iiht.training.model.Task;
 import com.iiht.training.model.User;
@@ -25,6 +27,9 @@ public class ProjectServiceImpl implements IProjectService {
 	
 	@Autowired
 	private ITaskRepository taskRepo;
+	
+	@Autowired
+	private IParentTaskRepository parentTaskRepo;
 
 	@Override
 	public User getUserById(Long userId) {
@@ -101,6 +106,27 @@ public class ProjectServiceImpl implements IProjectService {
 	@Override
 	public void deleteTask(Long taskId) {
 		taskRepo.deleteById(taskId);
+	}
+	
+	
+	@Override
+	public ParentTask getParentTaskById(Long parentTaskId) {
+		Optional<ParentTask> optParentTask = parentTaskRepo.findById(parentTaskId);
+		ParentTask parentTask = optParentTask.isPresent() ? optParentTask.get() : null;
+
+		return parentTask;
+	}
+
+	@Override
+	public List<ParentTask> listParentTasks() {
+		return parentTaskRepo.findAll();
+	}
+
+	@Transactional
+	@Override
+	public ParentTask addParentTask(ParentTask parentTask) {
+		ParentTask parentTaskReturned = parentTaskRepo.save(parentTask);
+		return parentTaskReturned;
 	}
 
 }

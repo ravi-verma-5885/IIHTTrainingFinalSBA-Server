@@ -59,6 +59,9 @@ public class Project implements Serializable {
 	
 	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
 	private Set<Task> tasks = new HashSet<>();
+	
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+	private Set<ParentTask> parentTasks = new HashSet<>();
 
 	public long getProjectId() {
 		return projectId;
@@ -108,6 +111,22 @@ public class Project implements Serializable {
 		this.user = user;
 	}
 	
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	public Set<ParentTask> getParentTasks() {
+		return parentTasks;
+	}
+
+	public void setParentTasks(Set<ParentTask> parentTasks) {
+		this.parentTasks = parentTasks;
+	}
+
 	public Project(long projectId, String projectName, Date startDate, Date endDate, int priority, User user) {
 		super();
 		this.projectId = projectId;
@@ -117,23 +136,6 @@ public class Project implements Serializable {
 		this.priority = priority;
 		this.user = user;
 	}
-
-//	public Project(long projectId, String projectName, Date startDate, Date endDate, int priority) {
-//		super();
-//		this.projectId = projectId;
-//		this.projectName = projectName;
-//		this.startDate = startDate;
-//		this.endDate = endDate;
-//		this.priority = priority;
-//	}
-//
-//	public Project(String projectName, Date startDate, Date endDate, int priority) {
-//		super();
-//		this.projectName = projectName;
-//		this.startDate = startDate;
-//		this.endDate = endDate;
-//		this.priority = priority;
-//	}
 
 	@Override
 	public String toString() {
