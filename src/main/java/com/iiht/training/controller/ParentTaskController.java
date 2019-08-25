@@ -51,6 +51,5 @@ public class ParentTaskController {
 		return new ResponseEntity<ParentTask>(parentTaskReturned, HttpStatus.OK);
 	}
 	
-	
 
 }
