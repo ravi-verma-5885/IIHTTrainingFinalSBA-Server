@@ -31,6 +31,8 @@ public interface IProjectService {
 	
 	public Task addTask(Task task);
 	
+	public Task updateTaskForStatus(Task task);
+	
 	public void deleteTask(Long taskId);
 	
 	public ParentTask getParentTaskById(Long parentTaskId);

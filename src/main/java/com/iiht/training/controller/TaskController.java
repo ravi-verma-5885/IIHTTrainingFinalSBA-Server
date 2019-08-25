@@ -55,7 +55,7 @@ public class TaskController {
 
 	@PutMapping
 	public ResponseEntity<Task> saveTask(@RequestBody Task task) {
-		Task taskReturned = projectService.addTask(task);
+		Task taskReturned = projectService.updateTaskForStatus(task);
 		return new ResponseEntity<Task>(taskReturned, HttpStatus.OK);
 
 	}

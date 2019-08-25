@@ -101,6 +101,15 @@ public class ProjectServiceImpl implements IProjectService {
 		Task taskReturned = taskRepo.save(task);
 		return taskReturned;
 	}
+	
+	@Transactional
+	@Override
+	public Task updateTaskForStatus(Task task) {
+		Project project = projectRepo.findProjectForTask(task.getTaskId());
+		task.setProject(project);
+		Task taskReturned = taskRepo.save(task);
+		return taskReturned;
+	}
 
 	@Transactional
 	@Override
