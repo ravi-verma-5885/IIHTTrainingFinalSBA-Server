@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 /**
  * @author Ravi
@@ -45,6 +47,7 @@ public class ParentTask implements Serializable {
 	private String parentTask;
 	
 	@ManyToOne
+	@JsonProperty(access = Access.WRITE_ONLY)
 	@JoinColumn(name = "project_id")
 	private Project project;
 	
@@ -72,6 +75,7 @@ public class ParentTask implements Serializable {
 		this.parentId = parentId;
 		this.parentTask = parentTask;
 	}
+
 	@JsonIgnore
 	public Project getProject() {
 		return project;
