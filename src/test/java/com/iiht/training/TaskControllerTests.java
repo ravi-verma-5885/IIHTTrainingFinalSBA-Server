@@ -24,6 +24,9 @@ import com.iiht.training.service.IProjectService;
 @RunWith(MockitoJUnitRunner.class)
 public class TaskControllerTests {
 	
+	public TaskControllerTests() {
+	}
+	
 	@Mock
 	private IProjectService service;
 

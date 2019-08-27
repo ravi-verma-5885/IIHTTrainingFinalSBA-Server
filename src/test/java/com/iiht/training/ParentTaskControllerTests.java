@@ -18,14 +18,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iiht.training.controller.ParentTaskController;
-import com.iiht.training.controller.UserController;
 import com.iiht.training.model.ParentTask;
-import com.iiht.training.model.User;
 import com.iiht.training.service.IProjectService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ParentTaskControllerTests {
-	
+
+	public ParentTaskControllerTests() {
+	}
+
 	@Mock
 	private IProjectService service;
 
@@ -39,37 +40,35 @@ public class ParentTaskControllerTests {
 	public void init() {
 		mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 	}
-	
+
 	@Test
 	public void testGetParentTaskById() throws Exception {
 		ParentTask parentTask = ApplicationTestData.getParentTaskDataToRead();
-		
+
 		Mockito.when(service.getParentTaskById(Mockito.anyLong())).thenReturn(parentTask);
-		
-		mockMvc.perform(MockMvcRequestBuilders.get("/parentTasks/9"))
-			.andExpect(MockMvcResultMatchers.status().is(200))
-			.andExpect(MockMvcResultMatchers.jsonPath("$.parentId").value(9));
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/parentTasks/9")).andExpect(MockMvcResultMatchers.status().is(200))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.parentId").value(9));
 	}
-	
+
 	@Test
 	public void testAddParentTask() throws Exception {
 		ParentTask parentTask = ApplicationTestData.getParentTaskDataToWrite();
-		
+
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonString = mapper.writeValueAsString(parentTask);
-		
+
 		MvcResult result = mockMvc
 				.perform(MockMvcRequestBuilders.post("/parentTasks").content(jsonString)
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().is(200)).andReturn();
 		Assert.assertEquals(200, result.getResponse().getStatus());
 	}
-	
+
 	@Test
 	public void testGetAllParentTasks() throws Exception {
-		
-		mockMvc.perform(MockMvcRequestBuilders.get("/parentTasks"))
-			.andExpect(MockMvcResultMatchers.status().is(200));
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/parentTasks")).andExpect(MockMvcResultMatchers.status().is(200));
 	}
 
 }
