@@ -82,17 +82,11 @@ public class User implements Serializable {
 		this.employeeId = employeeId;
 	}
 
-	public User(String firstName, String lastName, String employeeId, Project project, Task task) {
+	public User(String firstName, String lastName, String employeeId) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.employeeId = employeeId;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", employeeId="
-				+ employeeId + "]";
 	}
 
 	public User() {

@@ -13,14 +13,8 @@ import com.iiht.training.model.User;
 public class ApplicationTestData {
 	
 	public static Project getProjectDataToRead() {
-		Project project = new Project();
-		project.setProjectId(1);
-		project.setPriority(9);
-		project.setProjectName("FSA work related changes in all screens.");
-		project.setStartDate(dateFromString("08/31/2019"));
-		project.setEndDate(dateFromString("11/26/2019"));
-		project.setUser(getUserDataToRead());
-		
+		Project project = new Project(1, "FSA work related changes in all screens.", dateFromString("08/31/2019")
+				, dateFromString("11/26/2019"), 9, getUserDataToRead());
 		return project;
 	}
 	
@@ -46,11 +40,7 @@ public class ApplicationTestData {
 	}
 	
 	public static User getUserDataToWrite() {
-		User user = new User();
-		user.setEmployeeId("T71929P");
-		user.setFirstName("Tanisha");
-		user.setLastName("Gupta");
-		
+		User user = new User("Tanisha", "Gupta", "T71929P");
 		return user;
 	}
 	
@@ -69,25 +59,14 @@ public class ApplicationTestData {
 	}
 	
 	public static Task getTaskDataToWrite() {
-		Task task = new Task();
-		
-		task.setPriority(24);
-		task.setTaskName("Testing task for Junit Test.");
-		task.setStartDate(dateFromString("09/22/2019"));
-		task.setEndDate(dateFromString("12/11/2019"));
-		task.setStatus("New");
-		task.setUser(getUserDataToRead());
+		Task task = new Task("Testing task for Junit Test.", dateFromString("09/22/2019"), dateFromString("12/11/2019"), 
+				24, "New", getParentTaskDataToRead(), getProjectDataToRead());
 		
 		return task;
 	}
 	
 	public static ParentTask getParentTaskDataToRead() {
-		ParentTask parentTask = new ParentTask();
-		
-		parentTask.setParentId(9);
-		parentTask.setParentTask("Parent task for checkbox validation on load after task creation");
-		parentTask.setProject(getProjectDataToRead());
-		
+		ParentTask parentTask = new ParentTask(9, "Parent task for checkbox validation on load after task creation");
 		return parentTask;
 	}
 	

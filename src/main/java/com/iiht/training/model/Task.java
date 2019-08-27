@@ -148,13 +148,6 @@ public class Task implements Serializable {
 		this.project = project;
 	}
 
-	@Override
-	public String toString() {
-		return "Task [taskId=" + taskId + ", taskName=" + taskName + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", priority=" + priority + ", status=" + status + ", parentTask=" + parentTask + ", project="
-				+ project + "]";
-	}
-
 	public Task() {
 		super();
 	}

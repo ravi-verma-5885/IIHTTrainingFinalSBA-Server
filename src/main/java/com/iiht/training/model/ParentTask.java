@@ -81,11 +81,6 @@ public class ParentTask implements Serializable {
 		this.project = project;
 	}
 
-	@Override
-	public String toString() {
-		return "ParentTask [parentId=" + parentId + ", parentTask=" + parentTask + "]";
-	}
-
 	public ParentTask() {
 		super();
 	}
