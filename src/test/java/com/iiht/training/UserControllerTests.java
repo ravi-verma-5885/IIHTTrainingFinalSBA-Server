@@ -86,6 +86,23 @@ public class UserControllerTests {
 
 		mockMvc.perform(MockMvcRequestBuilders.delete("/users/1")).andExpect(MockMvcResultMatchers.status().is(200));
 	}
+	
+	@Test
+	public void testDeleteUser_WhenUnSuccess() throws Exception {
+		User user = null;
+		Mockito.when(service.getUserById(Mockito.anyLong())).thenReturn(user);
+		mockMvc.perform(MockMvcRequestBuilders.delete("/users/0")).andExpect(MockMvcResultMatchers.status().is(404));
+	}
+	
+	@Test
+	public void testGetUser_WhenUnSuccess() throws Exception {
+		User user = null;
+
+		Mockito.when(service.getUserById(Mockito.anyLong())).thenReturn(user);
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/users/0")).andExpect(MockMvcResultMatchers.status().is(404));
+
+	}
 
 	@Test
 	public void testGetAllUsers() throws Exception {

@@ -70,5 +70,15 @@ public class ParentTaskControllerTests {
 
 		mockMvc.perform(MockMvcRequestBuilders.get("/parentTasks")).andExpect(MockMvcResultMatchers.status().is(200));
 	}
+	
+	@Test
+	public void testGetParentTask_WhenUnSuccess() throws Exception {
+		ParentTask parentTask = null;
+
+		Mockito.when(service.getParentTaskById(Mockito.anyLong())).thenReturn(parentTask);
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/parentTasks/0")).andExpect(MockMvcResultMatchers.status().is(404));
+
+	}
 
 }

@@ -2,6 +2,8 @@ package com.iiht.training.controller;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +25,20 @@ public class ParentTaskController {
 
 	@Autowired
 	private IProjectService projectService;
+	
+	Logger logger = LogManager.getLogger(ParentTaskController.class);
 
 	@GetMapping("/{parentTaskId}")
 	public ResponseEntity<ParentTask> getParentTaskById(@PathVariable("parentTaskId") Long parentTaskId) {
 		ResponseEntity<ParentTask> response = null;
-
+		logger.info("Search Parent Task with Id: "+ parentTaskId);
 		ParentTask parentTask = projectService.getParentTaskById(parentTaskId);
 
 		if (null != parentTask) {
+			logger.info("Parent Task found with name: "+ parentTask.getParentTask());
 			response = new ResponseEntity<ParentTask>(parentTask, HttpStatus.OK);
 		} else {
+			logger.info("Parent Task not found.");
 			response = new ResponseEntity<ParentTask>(parentTask, HttpStatus.NOT_FOUND);
 		}
 
@@ -42,12 +48,14 @@ public class ParentTaskController {
 	@GetMapping
 	public ResponseEntity<List<ParentTask>> getAllParentTasks() {
 		List<ParentTask> parentTaskList = projectService.listParentTasks();
+		logger.info("Get all Parent Tasks with count: "+ parentTaskList.size());
 		return new ResponseEntity<List<ParentTask>>(parentTaskList, HttpStatus.OK);
 	}
 	
 	@PostMapping
 	public ResponseEntity<ParentTask> addParentTask(@RequestBody ParentTask parentTask) {
 		ParentTask parentTaskReturned = projectService.addParentTask(parentTask);
+		logger.info("Parent Task added successfully with name: " + parentTask.getParentTask());
 		return new ResponseEntity<ParentTask>(parentTaskReturned, HttpStatus.OK);
 	}
 	

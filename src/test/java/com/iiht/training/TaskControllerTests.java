@@ -89,6 +89,24 @@ public class TaskControllerTests {
 	}
 	
 	@Test
+	public void testDeleteTask_WhenUnSuccess() throws Exception {
+		Task task = null;
+		Mockito.when(service.getTaskById(Mockito.anyLong())).thenReturn(task);
+		mockMvc.perform(MockMvcRequestBuilders.delete("/tasks/0")).andExpect(MockMvcResultMatchers.status().is(404));
+	}
+	
+	@Test
+	public void testGetTask_WhenUnSuccess() throws Exception {
+		Task task = null;
+
+		Mockito.when(service.getTaskById(Mockito.anyLong())).thenReturn(task);
+		
+		mockMvc.perform(MockMvcRequestBuilders.get("/tasks/0"))
+			.andExpect(MockMvcResultMatchers.status().is(404));
+
+	}
+	
+	@Test
 	public void testGetAllTasks() throws Exception {
 		
 		mockMvc.perform(MockMvcRequestBuilders.get("/tasks"))

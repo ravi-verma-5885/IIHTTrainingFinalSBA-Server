@@ -87,6 +87,23 @@ public class ProjectControllerTests {
 
 		mockMvc.perform(MockMvcRequestBuilders.delete("/projects/1")).andExpect(MockMvcResultMatchers.status().is(200));
 	}
+	
+	@Test
+	public void testDeleteProject_WhenUnSuccess() throws Exception {
+		Project project = null;
+		Mockito.when(service.getProjectById(Mockito.anyLong())).thenReturn(project);
+		mockMvc.perform(MockMvcRequestBuilders.delete("/projects/0")).andExpect(MockMvcResultMatchers.status().is(404));
+	}
+	
+	@Test
+	public void testGetProject_WhenUnSuccess() throws Exception {
+		Project project = null;
+
+		Mockito.when(service.getProjectById(Mockito.anyLong())).thenReturn(project);
+
+		mockMvc.perform(MockMvcRequestBuilders.get("/projects/0")).andExpect(MockMvcResultMatchers.status().is(404));
+
+	}
 
 	@Test
 	public void testGetAllProjects() throws Exception {

@@ -1,0 +1,58 @@
+2019-08-28 18:04:42.944  INFO 25415 --- [restartedMain] c.i.t.IihtTrainingFinalSbaApplication    : Starting IihtTrainingFinalSbaApplication on Ravis-MacBook-Pro.local with PID 25415 (started by raviverma in /Users/raviverma/Documents/Ravi Verma/Training/IIHT/Projects/Assignments/IIHTTrainingFinalSBA)
+2019-08-28 18:04:42.945  INFO 25415 --- [restartedMain] c.i.t.IihtTrainingFinalSbaApplication    : No active profile set, falling back to default profiles: default
+2019-08-28 18:04:43.106  INFO 25415 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-28 18:04:43.120  INFO 25415 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 4 repository interfaces.
+2019-08-28 18:04:43.165  INFO 25415 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d98f6f13] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-28 18:04:43.219  INFO 25415 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8044 (http)
+2019-08-28 18:04:43.221  INFO 25415 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-28 18:04:43.221  INFO 25415 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-08-28 18:04:43.231  INFO 25415 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-28 18:04:43.231  INFO 25415 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 285 ms
+2019-08-28 18:04:43.278  INFO 25415 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2019-08-28 18:04:43.282  INFO 25415 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2019-08-28 18:04:43.287  INFO 25415 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-28 18:04:43.297  INFO 25415 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-08-28 18:04:43.460  INFO 25415 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-28 18:04:43.472  INFO 25415 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-28 18:04:43.596  INFO 25415 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-28 18:04:43.603  WARN 25415 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-28 18:04:43.666  INFO 25415 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8044 (http) with context path ''
+2019-08-28 18:04:43.667  INFO 25415 --- [restartedMain] c.i.t.IihtTrainingFinalSbaApplication    : Started IihtTrainingFinalSbaApplication in 0.935 seconds (JVM running for 209.591)
+2019-08-28 18:04:43.669  INFO 25415 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-08-28 18:04:54.795  INFO 25415 --- [http-nio-8044-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-08-28 18:04:54.796  INFO 25415 --- [http-nio-8044-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-08-28 18:04:54.800  INFO 25415 --- [http-nio-8044-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2019-08-28 18:04:54.809  INFO 25415 --- [http-nio-8044-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-08-28 18:04:54.825  INFO 25415 --- [http-nio-8044-exec-1] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:04:57.285  INFO 25415 --- [http-nio-8044-exec-2] c.i.training.controller.UserController   : Get all Users with count: 5
+2019-08-28 18:04:59.115  INFO 25415 --- [http-nio-8044-exec-3] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:05:00.949  INFO 25415 --- [http-nio-8044-exec-4] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:05:01.836  INFO 25415 --- [http-nio-8044-exec-5] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:05:03.579  INFO 25415 --- [http-nio-8044-exec-6] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:05:04.257  INFO 25415 --- [http-nio-8044-exec-7] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:05:16.332  INFO 25415 --- [http-nio-8044-exec-8] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:06:22.483  INFO 25415 --- [http-nio-8044-exec-10] c.i.training.controller.UserController   : Get all Users with count: 5
+2019-08-28 18:06:25.423  INFO 25415 --- [http-nio-8044-exec-1] c.i.training.controller.UserController   : Search User with Id: 2
+2019-08-28 18:06:25.427  INFO 25415 --- [http-nio-8044-exec-1] c.i.training.controller.UserController   : User found with name: Preeti Bajpai
+2019-08-28 18:06:30.728  INFO 25415 --- [http-nio-8044-exec-3] c.i.training.controller.UserController   : User updated successfully with name: Preeti Bajpai
+2019-08-28 18:06:44.155  INFO 25415 --- [http-nio-8044-exec-4] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:06:51.035  INFO 25415 --- [http-nio-8044-exec-5] c.i.t.controller.ProjectController       : Search Project with Id: 4
+2019-08-28 18:06:51.038  INFO 25415 --- [http-nio-8044-exec-5] c.i.t.controller.ProjectController       : Project found with Name: Smart scan application project enhancements
+2019-08-28 18:07:08.500  INFO 25415 --- [http-nio-8044-exec-7] c.i.t.controller.ProjectController       : Project updated successfully with name: Smart scan application project enhancements
+2019-08-28 18:07:28.304  INFO 25415 --- [http-nio-8044-exec-8] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:07:36.213  INFO 25415 --- [http-nio-8044-exec-9] c.i.t.controller.ParentTaskController    : Parent Task added successfully with name: Archival Job store Procedure part -2
+2019-08-28 18:07:43.541  INFO 25415 --- [http-nio-8044-exec-10] c.i.training.controller.UserController   : Get all Users with count: 5
+2019-08-28 18:07:46.115  INFO 25415 --- [http-nio-8044-exec-1] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:08:04.840  INFO 25415 --- [http-nio-8044-exec-2] c.i.t.controller.ParentTaskController    : Get all Parent Tasks with count: 3
+2019-08-28 18:08:16.044  INFO 25415 --- [http-nio-8044-exec-3] c.i.training.controller.UserController   : Get all Users with count: 5
+2019-08-28 18:08:18.906  INFO 25415 --- [http-nio-8044-exec-4] c.i.training.controller.TaskController   : Task added successfully with name: child task for smart scan
+2019-08-28 18:08:23.117  INFO 25415 --- [http-nio-8044-exec-5] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:08:25.965  INFO 25415 --- [http-nio-8044-exec-6] c.i.t.controller.ProjectController       : Get all Projects with count: 4
+2019-08-28 18:08:34.348  INFO 25415 --- [http-nio-8044-exec-7] c.i.training.controller.TaskController   : Task added successfully with name: child task for smart scan
+2019-08-28 18:09:05.466  INFO 25415 --- [RMI TCP Connection(10)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2019-08-28 18:09:05.469  INFO 25415 --- [RMI TCP Connection(10)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-08-28 18:09:05.469  INFO 25415 --- [RMI TCP Connection(10)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-08-28 18:09:05.470  INFO 25415 --- [RMI TCP Connection(10)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2019-08-28 18:09:05.476  INFO 25415 --- [RMI TCP Connection(10)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
